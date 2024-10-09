@@ -1,0 +1,43 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --main-color: #e39300;
+  --bg-color: #121212;
+  --card-bg-color: #161616;
+}
+
+@layer base {
+  body {
+    @apply font-['Poppins',sans-serif] bg-white dark:bg-[var(--bg-color)] text-black dark:text-white;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply text-white bg-transparent border-2 border-[var(--main-color)] text-base font-semibold py-2 px-6 cursor-pointer relative z-10 hover:text-[var(--main-color)] transition-colors duration-300;
+  }
+
+  .btn::after {
+    content: '';
+    @apply absolute top-0 right-0 w-full h-full bg-[var(--main-color)] transition-all duration-300 z-[-1];
+  }
+
+  .btn:hover::after {
+    @apply w-0;
+  }
+
+  .section-title {
+    @apply text-4xl font-bold mb-12 text-center relative;
+  }
+
+  .section-title::after {
+    content: attr(data-title);
+    @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-9xl font-bold text-gray-800 opacity-5 w-full text-center;
+  }
+}
+
+/* Add any additional custom styles here */
